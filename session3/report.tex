@@ -9,7 +9,7 @@
 \usepackage{indentfirst}
 
 % For better navigation
-\usepackage{hyperref}
+\usepackage[hidelinks]{hyperref}
 % For forcing image position (by using [H])
 \usepackage{float}
 % Need that just for \abs{}
@@ -24,8 +24,8 @@
 \begin{abstract}
 	This is a report for the third laboratory session for the Applied Physics course, regarding image manipulation. The experience was structured into four main exercises:
 	\begin{itemize}
-		\item for the first exercise we were asked to reduce the noise present into 3 different images using operations both in the spacial and frequency domain, evaluating each time the quality of the pictures before and after the trasformation by means of signal to noise ratio (SNR) performed on a profile and an extended area were the images were as uniform as possible;
-    \item for the second exercise we had to perform a similar task on an image containing various parallel lines patterns at different frenquencies; exploiting this peculiarity we were also able to determine the spacial resolution in terms of Modulation Transfer Function (MTF) before and after the application of spacial and FFT noise reduction filters;
+		\item for the first exercise we were asked to reduce the noise present into 3 different images using operations both in the spacial and frequency domain, evaluating each time the quality of the pictures before and after the trasformation by means of signal to noise ratio (SNR) performed on a profile and on an extended area were the images were as uniform as possible;
+    \item for the second exercise we had to perform a similar task on an image containing various parallel lines patterns at different frenquencies; exploiting this peculiarity we were also able to determine the spacial resolution in terms of Modulation Transfer Function (MTF) before and after the application of spacial and Fast Fourier Transform (FFT) noise reduction filters;
 		\item for the third exercise we were asked to perform a flat-field correction on a mammographic image and evaluate, before and after, the image quality by means of SNR and Contrast-Noise Ratio (CNR);
     \item finally, using a phantom containing various framed circles at various diameters and levels of contrast, we were asked to calculate the CNR on each detail and graph that value as a function of the thickness of the detail.
 	\end{itemize}
@@ -50,20 +50,20 @@ For the first part of the experience we were given three different pictures affe
 		\hline
 		Figure & Operation & $\sigma_{profile}$ & SNR \\ \hline
 		1a & raw & 6.78 & 11.12 \\ \hline
-		   & median filter & 3.65 & 23.33 \\ \hline
-		   & low-pass filter & 3.65 & 24.60 \\ \hline
-		1b & raw & 7.45 & 10.28 \\ \hline
-		& mean filter & 4.90 & 16.54 \\ \hline
-		& low-pass filter & 5.37 & 16.03 \\ \hline
-		1c & raw & 77.97 & 0.77 \\ \hline
-		& gaussian filter & 1.78 & 35.28 \\ \hline
-		& low-pass filter & 7.86 & 5.45 \\ \hline
+		1b & median filter & 3.65 & 23.33 \\ \hline
+		2a & low-pass filter & 3.65 & 24.60 \\ \hline
+		1c & raw & 7.45 & 10.28 \\ \hline
+		1d & mean filter & 4.90 & 16.54 \\ \hline
+		2c & low-pass filter & 5.37 & 16.03 \\ \hline
+		1e & raw & 77.97 & 0.77 \\ \hline
+		1f & gaussian filter & 1.78 & 35.28 \\ \hline
+		2e & low-pass filter & 7.86 & 5.45 \\ \hline
 	\end{tabular}
-	\caption{}
+  \caption{Noise and SNR values for the three images before and after the transforms.}
   \label{tab:ex_one}
 \end{table}
 
-In the spatial domain we decided to use a median filter for Fig.~\ref{kiddo_raw} , a mean filter for Figure~\ref{tetta_raw} and a gaussian filter for Figure~\ref{moon_raw}. As for the FFT operations we decided to apply a low-pass filter to all three of the images, in order to cut all the high frequencies from the frequency domain, since our objective was to reduce noise. The results of these operations can be seen in Fig.~\ref{fig:ex_one} and \ref{fig:ex_one_fft} respectively, while the profile standard deviation and the SNR for the extended area for each picture and each transformation are tabled in Tab. \ref{tab:ex_one}.
+In the spatial domain we decided to use a median filter for Fig.~\ref{kiddo_raw} , a mean filter for Fig.~\ref{tetta_raw} and a gaussian filter for Fig.~\ref{moon_raw}. As for the FFT operations we decided to apply a low-pass filter to all three of the images, in order to cut all the high frequencies from the frequency domain, since our objective was to reduce noise. The results of these operations can be seen in Fig.~\ref{fig:ex_one} and \ref{fig:ex_one_fft} respectively, while the profile standard deviation and the SNR for the extended area for each picture and each transformation are reported in Tab. \ref{tab:ex_one}.
 
 As it was to be expected the noise reduction operations managed to reduce the profile standard deviation and augment the SNR which are both signs of improvement in image quality.
 
@@ -98,21 +98,6 @@ As it was to be expected the noise reduction operations managed to reduce the pr
 
 
 \section*{Exercise 2}
-\begin{table}[h]
-	\centering
-	\begin{tabular}{| l | l | l | l | }
-		\hline
-		Pattern & Operation & SNR & MTF \\ \hline
-		$2.5\ lp/mm$& raw & 6.78 & 11.12 \\ \hline
-		& gaussian filter & 3.65 & 23.33 \\ \hline
-		& low-pass filter & 3.65 & 24.60 \\ \hline
-		$6.3\ lp/mm$& raw & 6.78 & 11.12 \\ \hline
-		& gaussian filter & 3.65 & 23.33 \\ \hline
-		& low-pass filter & 3.65 & 24.60 \\ \hline
-	\end{tabular}
-	\caption{da riempire}
-  \label{tab:ex_two}
-\end{table}
 
 \begin{figure}[!hbt]
   \centering
@@ -120,7 +105,7 @@ As it was to be expected the noise reduction operations managed to reduce the pr
   \subfloat[][]{\includegraphics[width=.33\textwidth]{./immagini_terza_prova/ex2/gaussian.jpg}}\\
   \subfloat[][]{\includegraphics[height=2in]{./immagini_terza_prova/ex2/raw0_fft.jpg}}\quad
   \subfloat[][]{\includegraphics[height=2in]{./immagini_terza_prova/ex2/FFTofraw0_fft.jpg}}
-	\caption{ (From top to bottom) a: Raw line patterns picture; b: Picture modified with gaussian filter  ; c: Picture modified with low-pass filter alongside its frequency spectrum}
+  \caption{(a): original image. (b): gaussian filter transform of (a). (c): low-pass filter transform of (a). (d): FFT domain of (c).}
   \label{fig:ex_two}
 \end{figure}
 
@@ -132,7 +117,7 @@ As it was to be expected the noise reduction operations managed to reduce the pr
   \subfloat[][]{\includegraphics[height=1.15in]{./immagini_terza_prova/ex2/62_prof_histo_gaussian.png}}\\
   \subfloat[][]{\includegraphics[height=1.15in]{./immagini_terza_prova/ex2/25_prof_histo_fft.PNG}}
   \subfloat[][]{\includegraphics[height=1.15in]{./immagini_terza_prova/ex2/62_prof_histo_fft.PNG}}
-	\caption{(From top to bottom) a: Averaged profile histogram of the raw picture for the $2.5\ lp/mm$ pattern (left) and $6.3\ lp/mm$ pattern (right); b: Averaged profile histogram of the gaussian filtered picture for the $2.5\ lp/mm$ pattern (left) and $6.3\ lp/mm$ pattern (right)  ; c: Averaged profile histogram of the low-pass filtered picture for the $2.5\ lp/mm$ pattern (left) and $6.3\ lp/mm$ pattern (right)}
+  \caption{(From top to bottom) Averaged profile histogram of the raw picture for the $2.5\ lp/mm$ pattern (a) and $6.3\ lp/mm$ pattern (b); averaged profile histogram of the gaussian filtered picture for the $2.5\ lp/mm$ pattern (c) and $6.3\ lp/mm$ pattern (d); averaged profile histogram of the low-pass filtered picture for the $2.5\ lp/mm$ pattern (e) and $6.3\ lp/mm$ pattern (f)}
   \label{fig:ex_two_pro}
 \end{figure}
 
@@ -143,83 +128,122 @@ The second exercise revolved around Fig. \ref{raw0}, which is affected by noise 
 \begin{equation}
 MTF=\frac{M_{out}}{M_{in}}=\frac{Modulation\ in\ recorded\ image}{Input\ modulation}
 \end{equation}
-Where $M_{out}$ is given by the contrast in grey levels between the peaks and valleys of averege profiles (the respective histograms, both for the raw and filtered image can be found in Fig. \ref{fig:ex_two_pro}) of the various line patterns, and $M_{in}$ is assumed t be equal to 40 gray levels in all cases. We decided to perform this operation for both the $2.5\ lp/mm$ and the
+Where $M_{out}$ is given by the contrast in grey levels between the peaks and valleys of average profiles (the respective histograms, both for the raw and filtered image can be found in Fig. \ref{fig:ex_two_pro}) of the various line patterns, and $M_{in}$ is assumed to be equal to 40 gray levels in all cases. We decided to perform this operation for both the $2.5\ lp/mm$ and the
 $6.3\ lp/mm$
 \end{itemize}
-We decided to apply to the image a gaussian filter in the spatial domain and a low pass filter, the effect of which can be found in Fig.~\ref{fig:ex_two}. The SNR and MTF values are instead tabled in Tab. \ref{tab:ex_two}.
 
-\clearpage
+\begin{table}[!htb]
+	\centering
+	\begin{tabular}{| l | l | l || l | l |}
+		\hline
+		Pattern      & Operation       & MTF           & Operation       & SNR \\ \hline
+    $2.5\ lp/mm$ & raw             & $0.33 \pm 0.13$ & raw             & $20.95$ \\ \hline
+                 & gaussian filter & $0.20 \pm 0.13$ & gaussian filter & $39.07$ \\ \hline
+                 & low-pass filter & $0.50 \pm 0.13$ & low-pass filter & $39.99$ \\ \hline
+    $6.3\ lp/mm$ & raw             & $0.08 \pm 0.12$ &                 & \\ \hline
+                 & gaussian filter & $0.03 \pm 0.05$ &                 & \\ \hline
+                 & low-pass filter & $0.05 \pm 0.05$ &                 & \\ \hline
+	\end{tabular}
+  \caption{Results of Exercise 2. Uncertainties on MTF, added due to the difficulty of performing a good measure by looking at the histogram, is computed using: $\delta MTF = \frac{\delta MTF_{out}*MTF}{MTF_{out}}$.}
+  \label{tab:ex_two}
+\end{table}
+
+We decided to apply to the image a gaussian filter in the spatial domain and a low pass filter, the effect of which can be found in Fig.~\ref{fig:ex_two}. The SNR and MTF values are instead reported in Tab. \ref{tab:ex_two}.
 
 
-\clearpage
-\section*{Exersize 3}
-For Exercise 3 we were asked to perform a flat-field correction on the mammographic image in Figure,. This operation can be performed by subtracting pixel by pixel a flat-field image from our raw image and multiplying by a normalization constant:
+
+\section*{Exercise 3}
+
+\begin{figure}[H]
+	\centering
+  \subfloat[][]{\includegraphics[width=.33\textwidth]{./immagini_terza_prova/ex3/cirs.jpg}\label{mammo_raw}}\quad
+  \subfloat[][]{\includegraphics[width=.33\textwidth]{./immagini_terza_prova/ex3/flat-field.jpg}\label{mammo_flatfield}}\\
+  \subfloat[][]{\includegraphics[width=.33\textwidth]{./immagini_terza_prova/ex3/Resultofcirs.jpg}\label{mammo_corrected}}
+  \caption{(a): raw mammographic picture with circular details within the phantom. (b): flat-field image. (c): flat-field corrected image.}
+  \label{fig:ex_three}
+\end{figure}
+
+For Exercise 3 we were asked to perform a flat-field correction on the mammographic image in Fig~\ref{fig:ex_three}. This operation can be performed by subtracting pixel by pixel a flat-field image from our raw image and multiplying by a normalization constant:
 \begin{equation}
 IC=(\frac{IR}{IF})* M
 \end{equation}
-Where IC is the corrected image (Figure 6c), IR is the raw image (Figure 6a), IF is the flat-field image (Figure6b)and M is the normalization constant, which in this case is assumed to be equal to 100.
+where IC is the corrected image (Fig.~\ref{mammo_corrected}), IR is the raw image (Fig.~\ref{mammo_raw}), IF is the flat-field image (Fig.~\ref{mammo_flatfield}) and M is the normalization constant, which in this case is assumed to be equal to 100.
 We were then asked to evaluate the image quality using:
 \begin{itemize}
-	\item Profile and SNR on an extended area outside the phantom (as described in Exercise 1)
-	\item Contrast to noise ratio (CNR) evaluated on the circular inserts within the phantom, by applying the formula:
+	\item profile and SNR on an extended area outside the phantom (as described in Exercise 1);
+	\item CNR evaluated on the circular inserts within the phantom, by applying the formula:
 	\begin{equation}
 	CNR=\frac{I_{detail}-I_{background}}{\sigma_{background}}
 	\end{equation}
-	Where $I_{detail}$ and $I_{background}$ the averege grey level of the detail and a homogenous area of the phantom respectively, and $\sigma_{background}$ is the gray level standard deviation for the same region, which can be interpreted as its noise. We calculated this parameter for two of the the details in the picture.
+	where $I_{detail}$ and $I_{background}$ are the averege gray level of the detail and a homogenous area of the phantom respectively and $\sigma_{background}$ is the gray level standard deviation for the same region, which can be interpreted as its noise. We calculated this parameter for two of the the details in the picture.
 \end{itemize}
-The results of these operations can are tabled in Table 3.
 
 \begin{table}[h]
-	\begin {center}
+	\centering
 	\begin{tabular}{| l | l | l | l | l |}
 		\hline
-		 Operation & $\sigma_{profile}$ & SNR & CNR(1) & CNR(2)\\ \hline
-		Raw& raw & 6.78 & 11.12  &\\ \hline
-		 Flat-field& gaussian filter & 3.65 & 23.33 &\\ \hline
-
+		 Operation  & $\sigma_{profile}$ & SNR   & CNR(big detail) & CNR(small detail)\\ \hline
+     Raw        & 178.07             & 38.32 & 1.77            & 1.05 \\ \hline
+     Flat-field & 11.56              & 59.51 & 1.23            & 0.58 \\ \hline
 	\end{tabular}
-	\caption{da riempire}
-\end{center}
+  \caption{Results of exercise 3.}
+  \label{tab:ex_3}
 \end{table}
-\clearpage
 
-\begin{figure}[!hbt]
-	\centering
-  \subfloat[][]{\includegraphics[width=.33\textwidth]{./immagini_terza_prova/ex3/cirs.jpg}}\quad
-  \subfloat[][]{\includegraphics[width=.33\textwidth]{./immagini_terza_prova/ex3/flat-field.jpg}}\\
-  \subfloat[][]{\includegraphics[width=.33\textwidth]{./immagini_terza_prova/ex3/Resultofcirs.jpg}}
-	\bigbreak
-	\caption{ (From top to bottom) a: Raw mammographic picture with circular details within the phantom; b: Flat-field image ; c: Flat-field corrected image}
-  \label{fig:ex_three}
-\end{figure}
+The results of these operations are reported in Tab.~\ref{tab:ex_3}.
 
 \clearpage
 
 \section*{Exercise 4}
-For the last session of the experience we were asked to evaluate the performance of the detection system , through a contrast-detail analysis  performed on Figure, which shows a picture (obtained with the detection system itself)of a table containing various circular shapes with different diameters (decreasing from top to bottom) and different levels of contrast with the background (decreasing from right to left). \\
-To this end we calculated the CNR on the central detail for all cells relative to the three diameters: 6.3mm, 4.0mm and 2.5mm. these values can be found graphed as a function of the thickness of the details in Figure.
+
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.8\textwidth]{./immagini_terza_prova/ex4/CDRAD-10_3.jpg}
-	\caption{Picture of the phantom we used toevaluate the performance of the detection system}
+  \caption{Picture of the phantom we used to evaluate the performance of the detection system.}
   \label{fig:phantom}
 \end{figure}
 
-\clearpage
+For the last session of the experience we were asked to evaluate the performance of the detection system, through a contrast-detail analysis  performed on Fig.~\ref{fig:phantom}, which shows a picture (obtained with the detection system itself) of a table containing various circular shapes with different diameters (decreasing from top to bottom) and different levels of contrast with the background (decreasing from right to left).
 
 \begin{figure}[!hbt]
 	\centering
-  \subfloat[][]{\includegraphics[width=.33\textwidth]{./immagini_terza_prova/ex3/cirs.jpg}}\quad
-  \subfloat[][]{\includegraphics[width=.33\textwidth]{./immagini_terza_prova/ex3/flat-field.jpg}}\\
-  \subfloat[][]{\includegraphics[width=.33\textwidth]{./immagini_terza_prova/ex3/Resultofcirs.jpg}}
-	\caption{ Value of CNRas a function of the thickness of the details of diameter: (From top to bottom) a- 6.3 mm b- 4.0 mm ; c- 2.5 mm (da inserire)}
-  \label{fig:ex_four}
+  \subfloat[][CNR as function of thickness, diameter of 2.5 mm.]{\includegraphics[width=.4\textwidth]{immagini_terza_prova/plots/25_plot.png}}\quad
+  \subfloat[][CNR as function of thickness, diameter of 4.0 mm.]{\includegraphics[width=.4\textwidth]{immagini_terza_prova/plots/4_plot.png}}\\
+  \subfloat[][CNR as function of thickness, diameter of 6.5 mm.]{\includegraphics[width=.4\textwidth]{immagini_terza_prova/plots/65_plot.png}}\quad
+  \subfloat[][CNR averaged over the thicknesses as a function of the diameter.]{\includegraphics[width=.4\textwidth]{immagini_terza_prova/plots/dummy_plot.png}}
+  \caption{Plots of the results of Exercise 4.}
+  \label{fig:plots_ex4}
 \end{figure}
 
+To this end we calculated the CNR on the central detail for all cells relative to the three diameters: 6.3 mm, 4.0 mm and 2.5 mm. These values can be found graphed as a function of both thickness and diameter of the details in Fig.~\ref{fig:plots_ex4}.
 
+\begin{table}[h]
+	\centering
+	\begin{tabular}{| l | l | l | l |}
+		\hline
+    Thickness [mm] & CNR, 2.5 mm & CNR, 4.0 mm & CNR, 6.5 mm\\ \hline
+    8.0 & 16.88 & 16.75 & 16.47\\ \hline
+    6.3 & 12.70 & 12.77 & 12.71\\ \hline
+    5.0 & 9.79 & 10.01 & 9.22\\ \hline
+    4.0 & 7.36 & 7.97 & 7.58\\ \hline
+    3.2 & 6.51 & 6.24 & 6.21\\ \hline
+    2.5 & 4.79 & 4.88 & 4.85\\ \hline
+    2.0 & 3.44 & 3.55 & 3.80\\ \hline
+    1.6 & 2.73 & 2.93 & 3.01\\ \hline
+    1.3 & 2.47 & 2.61 & 2.44\\ \hline
+    1.0 & 1.74 & 2.07 & 1.84\\ \hline
+    0.8 & 1.48 & 1.54 & 1.43\\ \hline
+    0.6 & 1.52 & 1.41 & 0.93\\ \hline
+    0.5 & 0.88 & 0.74 & 0.96\\ \hline
+    0.4 & 1.01 & 0.71 & 0.63\\ \hline
+    0.3 & 0.65 & 0.61 & 0.44\\ \hline
+	\end{tabular}
+  \caption{CNR computed for three different diameters for all the detail thicknesses.}
+  \label{tab:ex4}
+\end{table}
 
-
+The results are reported in Tab.~\ref{tab:ex4}.
 
 \end{document}
 
