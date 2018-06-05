@@ -59,7 +59,7 @@ For the first part of the experience we were given three different pictures affe
 		1f & gaussian filter & 1.78 & 35.28 \\ \hline
 		2e & low-pass filter & 7.86 & 5.45 \\ \hline
 	\end{tabular}
-  \caption{Noise and SNR values for the three images before and after the transforms.}
+  \caption{Noise and SNR values for the three images before and after the transforms. We can see that for every image the noise decreases and consequently the SNR encreases.}
   \label{tab:ex_one}
 \end{table}
 
@@ -121,14 +121,14 @@ As it was to be expected the noise reduction operations managed to reduce the pr
   \label{fig:ex_two_pro}
 \end{figure}
 
-The second exercise revolved around Fig. \ref{raw0}, which is affected by noise created during the acquisition process and contains varios line patterns at different frequencies, measured in $lp/ mm$. Analog to what we did in Exercise 1, we were asked to reduce the noise through operations performed both in the spatial and frequency domains. In this case we were asked to evaluate the effect of the operations by calculating:
+The second exercise revolved around Fig. \ref{raw0}, which is affected by noise created during the acquisition process and contains various line patterns at different frequencies, measured in $lp/ mm$. Analog to what we did in Exercise 1, we were asked to reduce the noise through operations performed both in the spatial and frequency domains. In this case we were asked to evaluate the effect of the operations by calculating:
 \begin{itemize}
 \item SNR on a homogenous region, as defined in Exercise 1;
 \item spatial resolution in terms of MTF which is defined as:
 \begin{equation}
 MTF=\frac{M_{out}}{M_{in}}=\frac{Modulation\ in\ recorded\ image}{Input\ modulation}
 \end{equation}
-Where $M_{out}$ is given by the contrast in grey levels between the peaks and valleys of average profiles (the respective histograms, both for the raw and filtered image can be found in Fig. \ref{fig:ex_two_pro}) of the various line patterns, and $M_{in}$ is assumed to be equal to 40 gray levels in all cases. We decided to perform this operation for both the $2.5\ lp/mm$ and the
+where $M_{out}$ is given by the contrast in grey levels between the peaks and valleys of average profiles (the respective histograms, both for the raw and filtered image can be found in Fig. \ref{fig:ex_two_pro}) of the various line patterns, and $M_{in}$ is assumed to be equal to 40 gray levels in all cases. We decided to perform this operation for both the $2.5\ lp/mm$ and the
 $6.3\ lp/mm$
 \end{itemize}
 
@@ -148,7 +148,7 @@ $6.3\ lp/mm$
   \label{tab:ex_two}
 \end{table}
 
-We decided to apply to the image a gaussian filter in the spatial domain and a low pass filter, the effect of which can be found in Fig.~\ref{fig:ex_two}. The SNR and MTF values are instead reported in Tab. \ref{tab:ex_two}.
+We decided to apply to the image a gaussian filter in the spatial domain and a low pass filter, the effect of which can be found in Fig.~\ref{fig:ex_two}. The SNR and MTF values are instead reported in Tab. \ref{tab:ex_two}. From the latter we can see that by reducing thenoise the SNR improves, while the spatial resolution decreases drastically due to the fact that contrast is diminished and the image gets blurred.
 
 
 
@@ -190,7 +190,7 @@ We were then asked to evaluate the image quality using:
   \label{tab:ex_3}
 \end{table}
 
-The results of these operations are reported in Tab.~\ref{tab:ex_3}.
+The results of this operation are reported in Tab.~\ref{tab:ex_3}. From the latter we can see that SNR increases, being the noise reduced, while the CNR decreases due to the reduction of the difference between the intensities of details and background.
 
 \clearpage
 
@@ -212,7 +212,7 @@ For the last session of the experience we were asked to evaluate the performance
   \subfloat[][CNR as function of thickness, diameter of 4.0 mm.]{\includegraphics[width=.4\textwidth]{immagini_terza_prova/plots/4_plot.png}}\\
   \subfloat[][CNR as function of thickness, diameter of 6.5 mm.]{\includegraphics[width=.4\textwidth]{immagini_terza_prova/plots/65_plot.png}}\quad
   \subfloat[][CNR averaged over the thicknesses as a function of the diameter.]{\includegraphics[width=.4\textwidth]{immagini_terza_prova/plots/dummy_plot.png}}
-  \caption{Plots of the results of Exercise 4.}
+  \caption{Plots of the results of Exercise 4. We can see that for every diameter, CNR encreases more or less linearly with the details' thickness, while the mean is more or less the same for every thickness.}
   \label{fig:plots_ex4}
 \end{figure}
 
